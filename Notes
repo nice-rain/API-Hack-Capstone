@@ -1,0 +1,27 @@
+JavaScript Classes
+
+js-player-info-form: This form is bound and used to submit player information as an AJAX call.
+
+js-single-submit: Submit button that was actually clicked for a single player. We can change this class to evoke a different function at runtime.
+
+js-compare-link: Submit button that was clicked to compare two players together.
+
+js-player2-submit: Submit button that was clicked to add another player to the form (and change the button to js-compare-submit).
+
+js-playerstats-heading: Table Heading that will either display one player's name or reference two compared players.
+
+js-stat-table: Class that we will use to build and insert a table into that compares the two players.
+
+
+
+
+<label for="ModeSelect">Select Mode:</label>
+                        <select name="GameMode" id="ModeSelect">
+                                <option value="lifetime">All Modes</option>
+                                <option value="Solo">Solo</option>
+                                <option value="Duo">Duo</option>
+                                <option value="Squads">Squads</option>
+                            </select>
+
+
+We need to create a <span> tag to add our 'select mode' back into.

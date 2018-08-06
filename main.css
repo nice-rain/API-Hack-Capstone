@@ -1,0 +1,211 @@
+/* Background color of the entire web-page */
+body
+{
+    background-color:#181818;
+    color:#FFF;
+}
+
+/* Labels for our selection form */
+label{
+    display:block;
+    text-align:left;
+    font-weight:bold;
+}
+
+input
+{
+    display:block;
+}
+
+/* The very top of the page (where a navigation would be) */
+.page-header
+{
+    background-color:#101010;
+    padding-bottom: 8px;
+    text-align: center;
+    color:#FFF;
+}
+
+/* Class for our stats cells */
+.table-stats-single
+{
+    text-align:right;
+}
+
+/* Class for our stats cells (on a compare table) */
+.table-stats-compare
+{
+    text-align:center;
+    min-width:75px;
+}
+
+/* Class for our table title */
+.table-title
+{
+    font-size:1.5rem;
+}
+
+table
+{
+    min-width:280px;
+    width:100%;
+}
+
+.form-player-info
+{
+    min-width:320px;
+}
+
+.player-one-name
+{
+    font-weight:bold;
+}
+
+/* Column container layout attributes */
+.stats-column
+{
+    min-width:320px;
+    background-color:#282828;
+    margin-left:3px;
+    margin-right:3px;
+    padding-left:0px;
+    padding-right:0px;
+    border-radius:0.2rem;
+    overflow:hidden;
+    -webkit-box-shadow: 1px 1px 1px 0px #101010; /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+    box-shadow: 1px 1px 1px 0px #101010; /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+}
+
+.detailed-stats-row
+{
+    padding-top:40px;
+}
+
+/* Default stats table layout (controls padding inside of the column)*/
+.stats-table-container
+{
+    /* max-width:320px; */
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.stats-table-container th
+{
+    font-size:14pt;
+    border-bottom:2px solid #191919;
+
+}
+
+.stats-table-container td
+{
+    border-bottom:1px solid #191919;
+}
+
+/* Style Player 1 Columns */
+.stats-table-container tbody td:nth-child(2) 
+{
+    color:#5eb7f3;
+}
+
+/* Style Player 2 columns */
+.stats-table-container tbody td:nth-child(3)
+{
+    color:#a477ce;
+}
+
+/* Class for our headers for each section */
+.lifetime-header
+{
+    background-color:#ad6838;
+}
+
+/* Default header title class */
+.header-title
+{
+    clip-path: polygon(0% 0%, 80% 0%, 90% 100%, 100% 100%, 0% 100%);
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom:1px;
+    padding-top:4px;
+}
+
+.header-title h2
+{
+    font-size:1.5rem;
+}
+
+.solo-header
+{
+    background-color:#4c8c1d;
+}
+
+.solo-header-title
+{
+    background-color:#8fba71;
+    color:#26321d;
+    width:40%;
+}
+
+.duo-header
+{
+    background-color:#067dcc;
+}
+
+.duo-header-title
+{
+    background-color:#76a9cb;
+    color:#023455;
+    width:40%;
+}
+
+.squad-header
+{
+    background-color:#8e48cf;
+}
+
+.squad-header-title
+{
+    background-color:#a77ccf;
+    color:#41215f;
+    width:40%;
+}
+
+.lifetime-header-title
+{
+    background-color:#bb8e6e;
+    color:#53321b;
+    width:50%;
+}
+
+.color-positive
+{
+    color:#4c8c1d;
+}
+
+.color-negative
+{
+    color:#ba1b2b;
+}
+
+.color-even
+{
+    color:#FFF;
+}
+
+.color-p1
+{
+    color:#067dcc;
+}
+
+.color-p2
+{
+    color:#8e48cf;
+}
+
+.color-diff
+{
+    color:#ad6838;
+}
+

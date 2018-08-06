@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+
+    <title>Fortnite Stat Comparison</title>
+    <meta name="description" content="Look up and compare states between two fortnite players.">
+  </head>
+
+  <body>
+    <header role="banner" class="page-header">
+        <h1>Fortnite Stat Comparison</h1>
+    </header>
+
+    <main role="main" class="container">
+        <!-- Section for containing our app -->
+        <section role="region">
+            <div class="row justify-content-center">
+                <!-- Form for fetching user stats -->
+                <form action="#" class="js-player-info-form form-player-info">
+                    <fieldset>
+                        <legend>Look up player stats:</legend>
+                        
+                        <label for="Player1Name">Player 1 Name:</label>
+                        <input type="text" id="Player1Name" required>                   
+
+                    </fieldset>
+                    <button type="submit" class="js-single-submit">Submit</button>
+                    <hr>
+                </form>
+            </div>
+            <div class="row justify-content-center">
+               <div class="stats-column">
+                    <!-- Contains the lifetime header within it -->
+                    <div class="lifetime-header">
+                        <div class="header-title lifetime-header-title">
+                            <h2>LIFETIME</h2>
+                        </div>
+                    </div>
+                    <!-- Div for table layout -->
+                    <div class="js-stats-table stats-table-container">
+                    <table>
+                       <tr>
+                           <td>Matches Played:</td>
+                           <td class="table-stats-single">287</td>
+                       </tr>
+                       <tr>
+                       <td>Wins:</td>
+                       <td class="table-stats-single">4</td>
+                       </tr>
+                   </table>
+                   </div>
+               </div>
+            </div>
+            <div class="row justify-content-center detailed-stats-row">
+                <!-- Solo stats column -->
+                <div class="col stats-column"> 
+                    <div class="solo-header">
+                        <div class="header-title solo-header-title">
+                            <h2>SOLO</h2>
+                        </div>
+                    </div>
+                    <!-- Solo table contianer -->
+                    <div class="js-solo-table stats-table-container"></div>
+                </div>
+                
+                <!-- Duo Table Column -->
+                <div class="col stats-column">
+                     <div class="duo-header">
+                         <div class="header-title duo-header-title">
+                            <h2>DUO</h2>
+                        </div>
+                    </div>
+                    <div class="js-duo-table stats-table-container"></div>
+                </div>
+
+                <!-- Squad Table Column -->
+                <div class="col stats-column"> 
+                    <div class="squad-header">
+                        <div class="header-title squad-header-title">
+                            <h2>SQUAD</h2>
+                        </div>
+                    </div>
+                    <div class="js-squad-table stats-table-container"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first [Bootstrap used slim which didn't support AJAX], then Popper.js, then Bootstrap JS -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
