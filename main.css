@@ -5,6 +5,16 @@ body
     color:#FFF;
 }
 
+section
+{
+    margin-top:20px;
+}
+
+.col
+{
+    margin-top:15px;
+}
+
 /* Labels for our selection form */
 label{
     display:block;
@@ -74,6 +84,7 @@ table
     overflow:hidden;
     -webkit-box-shadow: 1px 1px 1px 0px #101010; /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
     box-shadow: 1px 1px 1px 0px #101010; /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+    min-height:200px;
 }
 
 .detailed-stats-row
@@ -145,7 +156,7 @@ table
 {
     background-color:#8fba71;
     color:#26321d;
-    width:40%;
+    width:180px;
 }
 
 .duo-header
@@ -157,7 +168,7 @@ table
 {
     background-color:#76a9cb;
     color:#023455;
-    width:40%;
+    width:180px;
 }
 
 .squad-header
@@ -169,14 +180,14 @@ table
 {
     background-color:#a77ccf;
     color:#41215f;
-    width:40%;
+    width:180px;
 }
 
 .lifetime-header-title
 {
     background-color:#bb8e6e;
     color:#53321b;
-    width:50%;
+    width:200px;
 }
 
 .color-positive

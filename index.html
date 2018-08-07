@@ -19,79 +19,84 @@
     </header>
 
     <main role="main" class="container">
-        <!-- Section for containing our app -->
-        <section role="region">
-            <div class="row justify-content-center">
-                <!-- Form for fetching user stats -->
-                <form action="#" class="js-player-info-form form-player-info">
-                    <fieldset>
-                        <legend>Look up player stats:</legend>
-                        
-                        <label for="Player1Name">Player 1 Name:</label>
-                        <input type="text" id="Player1Name" required>                   
-
-                    </fieldset>
-                    <button type="submit" class="js-single-submit">Submit</button>
-                    <hr>
-                </form>
-            </div>
-            <div class="row justify-content-center">
-               <div class="stats-column">
-                    <!-- Contains the lifetime header within it -->
-                    <div class="lifetime-header">
-                        <div class="header-title lifetime-header-title">
-                            <h2>LIFETIME</h2>
-                        </div>
-                    </div>
-                    <!-- Div for table layout -->
-                    <div class="js-stats-table stats-table-container">
-                    <table>
-                       <tr>
-                           <td>Matches Played:</td>
-                           <td class="table-stats-single">287</td>
-                       </tr>
-                       <tr>
-                       <td>Wins:</td>
-                       <td class="table-stats-single">4</td>
-                       </tr>
-                   </table>
-                   </div>
-               </div>
-            </div>
-            <div class="row justify-content-center detailed-stats-row">
-                <!-- Solo stats column -->
-                <div class="col stats-column"> 
-                    <div class="solo-header">
-                        <div class="header-title solo-header-title">
-                            <h2>SOLO</h2>
-                        </div>
-                    </div>
-                    <!-- Solo table contianer -->
-                    <div class="js-solo-table stats-table-container"></div>
+            <!-- Section for containing our app -->
+            <section role="region">
+                <div class="row justify-content-center">
+    
+                    <!-- Form column -->
+                    <div class="col col-lg-4">
+                    <!-- Form for fetching user stats -->
+                    <form action="#" class="js-player-info-form form-player-info">
+                        <fieldset>
+                            <legend>Look up player stats:</legend>
+                            
+                            <label for="Player1Name">Player 1 Name:</label>
+                            <input type="text" id="Player1Name" required>                   
+    
+                        </fieldset>
+                        <button type="submit" class="js-single-submit">Submit</button>
+                        <hr>
+                    </form>
                 </div>
-                
-                <!-- Duo Table Column -->
-                <div class="col stats-column">
-                     <div class="duo-header">
-                         <div class="header-title duo-header-title">
-                            <h2>DUO</h2>
+                <!-- Lifetime Column -->
+                <div class="col justify-content-center stats-column">
+                        <!-- Contains the lifetime header within it -->
+                        <div class="lifetime-header">
+                            <div class="header-title lifetime-header-title">
+                                <h2>LIFETIME</h2>
+                            </div>
                         </div>
-                    </div>
-                    <div class="js-duo-table stats-table-container"></div>
-                </div>
-
-                <!-- Squad Table Column -->
-                <div class="col stats-column"> 
-                    <div class="squad-header">
-                        <div class="header-title squad-header-title">
-                            <h2>SQUAD</h2>
-                        </div>
-                    </div>
-                    <div class="js-squad-table stats-table-container"></div>
+                        <!-- Div for table layout -->
+                        <div class="js-stats-table stats-table-container">
+                        <table>
+                           <tr>
+                               <td>Matches Played:</td>
+                               <td class="table-stats-single">287</td>
+                           </tr>
+                           <tr>
+                           <td>Wins:</td>
+                           <td class="table-stats-single">4</td>
+                           </tr>
+                       </table>
+                       </div>
                 </div>
             </div>
-        </section>
-    </main>
+    
+                <!-- Row 2 -->
+                <div class="row justify-content-center detailed-stats-row">
+                    <!-- Solo stats column -->
+                    <div class="col stats-column"> 
+                        <div class="solo-header">
+                            <div class="header-title solo-header-title">
+                                <h2>SOLO</h2>
+                            </div>
+                        </div>
+                        <!-- Solo table contianer -->
+                        <div class="js-solo-table stats-table-container"></div>
+                    </div>
+                    
+                    <!-- Duo Table Column -->
+                    <div class="col stats-column">
+                         <div class="duo-header">
+                             <div class="header-title duo-header-title">
+                                <h2>DUO</h2>
+                            </div>
+                        </div>
+                        <div class="js-duo-table stats-table-container"></div>
+                    </div>
+    
+                    <!-- Squad Table Column -->
+                    <div class="col stats-column"> 
+                        <div class="squad-header">
+                            <div class="header-title squad-header-title">
+                                <h2>SQUAD</h2>
+                            </div>
+                        </div>
+                        <div class="js-squad-table stats-table-container"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first [Bootstrap used slim which didn't support AJAX], then Popper.js, then Bootstrap JS -->
