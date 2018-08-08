@@ -27,6 +27,16 @@ input
     display:block;
 }
 
+span
+{
+    color:red;
+}
+
+.error
+{
+    display:inline-block;
+}
+
 /* The very top of the page (where a navigation would be) */
 .page-header
 {

@@ -22,6 +22,12 @@ const API_KEY = "O0gepvKFlLkth2F1kLqP";
 // DOM Functions
 //=======================================================
 
+//Small function for displaying an error in our js-error span
+function jsError(message)
+{
+    $('.js-error').html(message).show().fadeOut(2000);
+}
+
 //Calculates the difference, determines if it is positive or negative, and returns the <td> element with the correct coloring
 function buildDifferenceCell(stat1, stat2, bPercent = false, bFloat = false)
 {
@@ -353,11 +359,14 @@ function buildCompareForm()
     //Add our player 2 name entry
     newForm += `<label for=\"Player2Name\">Player 2 Name:</label><input type=\"text\" id=\"Player2Name\" required>`;
 
-    //Add our submit button (this will only refresh/change player 2's stats at this point)
-    newForm += "<button type=\"submit\" class=\"js-player2-submit\">Submit</button>";
+    //Add our error div
+    newForm += `<div class=\"error\"><span class=\"js-error\"></span></div>`;
 
     //close our fieldset tag
     newForm += "</fieldset>";
+
+    //Add our submit button (this will only refresh/change player 2's stats at this point)
+    newForm += "<button type=\"submit\" class=\"js-player2-submit\">Submit</button>";
 
     //Add our horizontal rule
     newForm += "<hr>";
@@ -490,7 +499,8 @@ function savePlayerStats(msg, playerNumber)
     else
     {
         //Error handling when we have no battle royale stats.
-        console.log("ERROR: The player has no BR stats.")
+        console.log("ERROR: The player has no BR stats.");
+        jsError("Player has no stats");
 
     }
 
@@ -579,6 +589,7 @@ function fortniteGetPlayerStats(playerName, playerNumber)
 
         ajaxRequest.fail(function(data){
             console.log('request failed');
+            jsError("Player has no stats");
         });
 }
 
@@ -600,7 +611,17 @@ function bindCompareSubmit()
         let parent = $(this).parent();
 
         //Submit AJAX Call/Update Function
-        fortniteGetPlayerStats(parent.find('#Player2Name').val(), 2);
+        //fortniteGetPlayerStats(parent.find('#Player2Name').val(), 2);
+
+        if(parent.find('#Player2Name').val())
+        {
+            //Submit AJAX Call/Update Function
+            fortniteGetPlayerStats(parent.find('#Player2Name').val(), 2);
+        }
+        else{
+            //$('.js-error').html("Player Name is Required").show().fadeOut(2000);
+            jsError("Player 2 Name is Required.");
+        }
     });
 }
 
@@ -634,8 +655,15 @@ function bindSinglePlayerSubmit()
         //Store our parent
         let parent = $(this).parent();
 
-        //Submit AJAX Call/Update Function
-        fortniteGetPlayerStats(parent.find('#Player1Name').val(), 1);
+        if(parent.find('#Player1Name').val())
+        {
+            //Submit AJAX Call/Update Function
+            fortniteGetPlayerStats(parent.find('#Player1Name').val(), 1);
+        }
+        else{
+            //$('.js-error').html("Player Name is Required").show().fadeOut(2000);
+            jsError("Player Name is Required.");
+        }
     });
 }
 
