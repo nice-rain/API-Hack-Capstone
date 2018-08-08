@@ -31,12 +31,6 @@ function jsError(message)
 //Calculates the difference, determines if it is positive or negative, and returns the <td> element with the correct coloring
 function buildDifferenceCell(stat1, stat2, bPercent = false, bFloat = false)
 {
-    console.log("Function: buildDifferenceCell");
-    console.log(`stat1: ${stat1}`);
-    console.log(`stat2: ${stat2}`);
-    console.log(`bPercent: ${bPercent}`);
-    console.log(`bFloat: ${bFloat}`);
-
     let colorString = "";
     let newCell = "";
 
@@ -84,13 +78,6 @@ function buildDifferenceCell(stat1, stat2, bPercent = false, bFloat = false)
 //Returns a given table row for our compare tables
 function buildCompareTableRow(statTitle, stat1, stat2, bPercent = false, bFloat = false)
 {
-    console.log("Function: buildCompareTableRow");
-    console.log(`statTitle: ${statTitle}`);
-    console.log(`stat1: ${stat1}`);
-    console.log(`stat2: ${stat2}`);
-    console.log(`bPercent: ${bPercent}`);
-    console.log(`bFloat: ${bFloat}`);
-
     let tableRow = "";
     let fixedStat1 = stat1;
     let fixedStat2 = stat2;
@@ -118,11 +105,6 @@ function buildCompareTableRow(statTitle, stat1, stat2, bPercent = false, bFloat 
 //Returns a table built for comparing two player's solo stats
 function buildTableCompareSolo()
 {
-    console.log("Function: buildTableCompareSolo");
-
-    //Add our table's title
-    //let newTable = `<h2 class="table-title">Solo</h2>`;
-
     //Calculate our float values (these should be 3 spaces max)
     let winRateDifference = PLAYER_ONE_STATS.stats.pc.solo.winRate - PLAYER_TWO_STATS.stats.pc.solo.winRate;
     let kdDifference = PLAYER_ONE_STATS.stats.pc.solo.kpd - PLAYER_TWO_STATS.stats.pc.solo.kpd;
@@ -153,11 +135,6 @@ function buildTableCompareSolo()
 //Returns a table built for comparing two player's duo stats
 function buildTableCompareDuo()
 {
-    console.log("Function: buildTableCompareDuo");
-
-    //Add our table's title
-    //let newTable = `<h2 class="table-title">Duo</h2>`;
-
     //Calculate our float values (these should be 3 spaces max)
     let winRateDifference = PLAYER_ONE_STATS.stats.pc.duo.winRate - PLAYER_TWO_STATS.stats.pc.duo.winRate;
     let kdDifference = PLAYER_ONE_STATS.stats.pc.duo.kpd - PLAYER_TWO_STATS.stats.pc.duo.kpd;
@@ -189,11 +166,6 @@ function buildTableCompareDuo()
 //Returns a table built for comparing two player's squad stats
 function buildTableCompareSquad()
 {
-    console.log("Function: buildTableCompareSquad");
-
-    //Add our table's title
-    //let newTable = `<h2 class="table-title">Squad</h2>`;
-
     //Calculate our float values (these should be 3 spaces max)
     let winRateDifference = PLAYER_ONE_STATS.stats.pc.squad.winRate - PLAYER_TWO_STATS.stats.pc.squad.winRate;
     let kdDifference = PLAYER_ONE_STATS.stats.pc.squad.kpd - PLAYER_TWO_STATS.stats.pc.squad.kpd;
@@ -225,11 +197,6 @@ function buildTableCompareSquad()
 //Returns a table built for comparing two player's lifetime stats
 function buildTableCompareLifetime()
 {
-    console.log("Function: buildTableCompareLifetime");
-
-    //Add our table's title
-    //let newTable = `<h2 class="table-title">Lifetime</h2>`;
-
     //Calculate our float values (these should be 3 spaces max)
     let winRateDifference = PLAYER_ONE_STATS.stats.pc.all.winRate - PLAYER_TWO_STATS.stats.pc.all.winRate;
     let kdDifference = PLAYER_ONE_STATS.stats.pc.all.kpd - PLAYER_TWO_STATS.stats.pc.all.kpd;
@@ -252,9 +219,6 @@ function buildTableCompareLifetime()
 //Returns a table built for a single player's solo stats
 function buildTablePlayerOneSolo()
 {
-    console.log("Function: buildTablePlayerOneSolo");
-    //let newTable =`<h2 class="table-title">Solo</h2>`;
-
     let scorePerMatch = PLAYER_ONE_STATS.stats.pc.solo.score / PLAYER_ONE_STATS.stats.pc.solo.matchesPlayed;
 
     let newTable = `<table>
@@ -276,9 +240,6 @@ function buildTablePlayerOneSolo()
 //Returns a table built for a single player's duo stats
 function buildTablePlayerOneDuo()
 {
-    console.log("Function: buildTablePlayerOneDuo");
-    //let newTable =`<h2 class="table-title">Duo</h2>`;
-
     let scorePerMatch = PLAYER_ONE_STATS.stats.pc.duo.score / PLAYER_ONE_STATS.stats.pc.duo.matchesPlayed;
 
     let newTable = `<table>
@@ -300,9 +261,6 @@ function buildTablePlayerOneDuo()
 //Returns a table built for a single player's squad stats
 function buildTablePlayerOneSquad()
 {
-    console.log("Function: buildTablePlayerOneSquad");
-    //let newTable =`<h2 class="table-title">Squad</h2>`;
-
     let scorePerMatch = PLAYER_ONE_STATS.stats.pc.squad.score / PLAYER_ONE_STATS.stats.pc.squad.matchesPlayed;
 
     let newTable = `<table>
@@ -324,11 +282,6 @@ function buildTablePlayerOneSquad()
 //Returns a table built for a single player's lifetime stats
 function buildTablePlayerOneLifetime()
 {
-    console.log("Function: buildTablePlayerOneLifetime");
-
-    //Start by building our table's header
-    //let newTable = `<h2 class="table-title">Lifetime</h2>`;
-
     let newTable = "<table>";
     //Add our table element and fill it in
     newTable += `
@@ -345,8 +298,6 @@ function buildTablePlayerOneLifetime()
 //Returns a form that allows the user to enter a player 2 to compare stats to.
 function buildCompareForm()
 {
-    console.log("Function: buildCompareForm");
-
     //open our fieldset
     let newForm = "<fieldset>"
 
@@ -378,8 +329,6 @@ function buildCompareForm()
 //Returns our form that will be used to add another player (or update match mode data)
 function buildAddPlayer2Form()
 {
-    console.log("Function: buildAddPlayer2Form");
-
     //Add our opening fieldset tag
     let newForm = "<fieldset>";
 
@@ -391,9 +340,6 @@ function buildAddPlayer2Form()
 
     //Add our link for adding a new player [this may be better as a button - I am not sure if semantic, but it looks 'normal' here]
     newForm += "<a href=\"#\" class=\"js-compare-link\">+ Player to Compare</a>";
-
-    //Add our select mode dropdown
-    //newForm += "<label for=\"ModeSelect\">Select Mode:</label><select name=\"GameMode\" id=\"ModeSelect\"><option value=\"lifetime\">All Modes</option><option value=\"Solo\">Solo</option><option value=\"Duo\">Duo</option><option value=\"Squads\">Squads</option></select>";
 
     //Close our fieldset
     newForm += "</fieldset>"
@@ -410,9 +356,6 @@ function buildAddPlayer2Form()
 //Refreshes DOM and adds our new table
 function refreshStatsTable(newTable)
 {
-    console.log("Function: refreshStatsTable");
-    console.log(`newTable: ${newTable}`);
-
     //Fetch our table div
     $('.js-stats-table').html(newTable);
 }
@@ -420,9 +363,6 @@ function refreshStatsTable(newTable)
 //Refreshes DOM and updates our duo table
 function refreshDuoTable(newTable)
 {
-    console.log("Function: refreshDuoTable");
-    console.log(`newTable: ${newTable}`);
-
     //Update our solo table
     $('.js-duo-table').html(newTable);
 }
@@ -430,9 +370,6 @@ function refreshDuoTable(newTable)
 //Refreshes DOM and updates our squad table
 function refreshSquadTable(newTable)
 {
-    console.log("Function: refreshSquadTable");
-    console.log(`newTable: ${newTable}`);
-
     //Update our squad table
     $('.js-squad-table').html(newTable);
 }
@@ -440,9 +377,6 @@ function refreshSquadTable(newTable)
 //Refreshes DOM and updates our solo table
 function refreshSoloTable(newTable)
 {
-    console.log("Function: refreshSoloTable");
-    console.log(`newTable: ${newTable}`);
-
     //Update our solo table
     $('.js-solo-table').html(newTable);
 }
@@ -450,9 +384,6 @@ function refreshSoloTable(newTable)
 //Refreshes DOM and adds our new form
 function refreshPlayerInfoForm(newForm)
 {
-    console.log("Function: refreshPlayerInfoForm");
-    console.log(`newTable: ${newForm}`);
-
     //Fetch our form div and update it
     $('.form-player-info').html(newForm);
 }
@@ -467,10 +398,6 @@ function refreshPlayerInfoForm(newForm)
 //We will not need to request player 1 again.
 function savePlayerStats(msg, playerNumber)
 {
-    console.log("Function: savePlayerStats");
-    console.log(`Player Number${playerNumber}\n: AJAX Response:`);
-    console.log(msg);
-
     //Check to see if we have BR Stats.
     //If we have stats, return true, otherwise return false
     if(!$.isEmptyObject(msg.br.stats))
@@ -491,17 +418,12 @@ function savePlayerStats(msg, playerNumber)
             return true;
         }
         else{
-            //Log to console when we submit a number that isn't 1 or 2
-            console.log("ERROR: Player number is not 1 or 2");
 
         }
     }
     else
     {
-        //Error handling when we have no battle royale stats.
-        console.log("ERROR: The player has no BR stats.");
         jsError("Player has no stats");
-
     }
 
     return false;        
@@ -512,13 +434,6 @@ function savePlayerStats(msg, playerNumber)
 //Once our stats are stored, calls DOM updates
 function updatePlayerStats(msg, playerNumber)
 {
-    console.log("Function: updatePlayerStats");
-    //Log our parameters
-    console.log("AJAX Response:");
-    console.log(msg);
-    console.log("Player Number:");
-    console.log(playerNumber);
-
     //Make sure we can save our stats before updating DOM
     if(savePlayerStats(msg, playerNumber))
     {       
@@ -550,7 +465,6 @@ function updatePlayerStats(msg, playerNumber)
         }
     }
     else{
-        console.log("Stat save failed");
     }
 
 
@@ -563,10 +477,6 @@ function updatePlayerStats(msg, playerNumber)
 //save the stats to and which DOM update function to call.
 function fortniteGetPlayerStats(playerName, playerNumber)
 {
-    console.log("Function: fortniteGetPlayerStats")
-    console.log(`Player Name: ${playerName}\nPlayer Number:`)
-    console.log(playerNumber);
-
         //AJAX Request (we can't use headers with JSON request)
         const requestSettings = 
         {
@@ -588,7 +498,6 @@ function fortniteGetPlayerStats(playerName, playerNumber)
         });
 
         ajaxRequest.fail(function(data){
-            console.log('request failed');
             jsError("Player has no stats");
         });
 }
@@ -605,13 +514,9 @@ function bindCompareSubmit()
     $('.js-player-info-form').on('click', '.js-player2-submit', function(event)
     {
         event.preventDefault();
-        console.log("Player clicked the player2 submit button.")
 
         //Store our parent
         let parent = $(this).parent();
-
-        //Submit AJAX Call/Update Function
-        //fortniteGetPlayerStats(parent.find('#Player2Name').val(), 2);
 
         if(parent.find('#Player2Name').val())
         {
@@ -634,8 +539,6 @@ function bindAddPlayerSubmit()
         //Stop the default behavior
         event.preventDefault();
 
-        console.log("Player Clicked Add Player Button");
-
         //Refresh our form after we remove the player entry and insert a player 2 entry.
         refreshPlayerInfoForm(buildCompareForm);
 
@@ -650,7 +553,6 @@ function bindSinglePlayerSubmit()
     {
         //Stop the default behavior
         event.preventDefault();
-        console.log("Player Clicked Single-Player Submit Button.");
 
         //Store our parent
         let parent = $(this).parent();
@@ -674,8 +576,6 @@ function bindSinglePlayerSubmit()
 //Function to load all of our event listeners
 function loadBindings()
 {
-    console.log("loadBindings");
-
     bindSinglePlayerSubmit();
     bindAddPlayerSubmit();
     bindCompareSubmit();
