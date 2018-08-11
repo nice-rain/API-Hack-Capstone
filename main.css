@@ -3,11 +3,49 @@ body
 {
     background-color:#181818;
     color:#FFF;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    line-height:1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  color: inherit;
+  margin-top:0;
+}
+
+h1
+{
+    font-size:2.5rem;
+}
+
+th
+{
+    text-align:left;
+}
+
+hr
+{
+    border-color:#2c2c2c;
 }
 
 section
 {
     margin-top:20px;
+}
+
+a
+{
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color:#005ab9;
+    text-decoration:underline;
 }
 
 .col
@@ -20,16 +58,40 @@ label{
     display:block;
     text-align:left;
     font-weight:bold;
+    margin-bottom:0.5rem;
 }
 
 input
 {
     display:block;
+    font-family:inherit;
+    line-height:inherit;
 }
 
 span
 {
     color:red;
+}
+
+legend
+{
+    display:block;
+    width:100%;
+    max-width:100%;
+    padding:0;
+    margin-bottom:0.5rem;
+    font-size:1.5rem;
+    line-height:inherit;
+    color:inherit;
+    white-space:normal;
+}
+
+fieldset
+{
+    display:block;
+    border:0;
+    padding:0;
+    margin:0;
 }
 
 .error
@@ -69,11 +131,15 @@ table
 {
     min-width:280px;
     width:100%;
+    border-collapse:collapse;
+    border-spacing:0;
 }
 
 .form-player-info
 {
     min-width:320px;
+    padding-left:5px;
+    padding-right:5px;
 }
 
 .player-one-name

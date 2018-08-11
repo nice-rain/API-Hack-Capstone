@@ -1,0 +1,30 @@
+body *
+{
+    box-sizing: border-box;
+}
+
+/* This controls our entire row */
+.row
+{
+    max-width:1140px;
+    margin: 0 auto;
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+
+/* Sets up our column gutters (we are only using a 4-column width)*/
+.column
+{
+    flex-grow:1;
+    flex-basis:0;
+    margin-top:15px;
+}
+
+ /* Non-mobile, grid */
+ @media only screen and (min-width: 640px) {
+    .col-lg
+    {
+        flex-grow:2;
+    }
+ }

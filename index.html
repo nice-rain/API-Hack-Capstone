@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
+    <link rel="stylesheet" href="grid.css">
     <link rel="stylesheet" href="main.css">
 
     <title>Fortnite Stat Comparison</title>
@@ -20,11 +21,11 @@
 
     <main role="main" class="container">
             <!-- Section for containing our app -->
-            <section role="region" aria-live="assertive">
+            <section role="region">
                 <div class="row justify-content-center">
     
                     <!-- Form column -->
-                    <div class="col col-lg-4">
+                    <div class="column">
                     <!-- Form for fetching user stats -->
                     <form action="#" class="js-player-info-form form-player-info">
                         <fieldset>
@@ -40,7 +41,7 @@
                     </form>
                 </div>
                 <!-- Lifetime Column -->
-                <div class="col justify-content-center stats-column">
+                <div class="column col-lg justify-content-center stats-column">
                         <!-- Contains the lifetime header within it -->
                         <div class="lifetime-header">
                             <div class="header-title lifetime-header-title">
@@ -48,7 +49,7 @@
                             </div>
                         </div>
                         <!-- Div for table layout -->
-                        <div class="js-stats-table stats-table-container">
+                        <div class="js-stats-table stats-table-container" aria-live="assertive">
                        </div>
                 </div>
             </div>
@@ -56,45 +57,42 @@
                 <!-- Row 2 -->
                 <div class="row justify-content-center detailed-stats-row">
                     <!-- Solo stats column -->
-                    <div class="col stats-column"> 
+                    <div class="column stats-column"> 
                         <div class="solo-header">
                             <div class="header-title solo-header-title">
                                 <h2>SOLO</h2>
                             </div>
                         </div>
-                        <!-- Solo table contianer -->
-                        <div class="js-solo-table stats-table-container"></div>
+                        <!-- Solo table container -->
+                        <div class="js-solo-table stats-table-container" aria-live="assertive"></div>
                     </div>
                     
                     <!-- Duo Table Column -->
-                    <div class="col stats-column">
+                    <div class="column stats-column">
                          <div class="duo-header">
                              <div class="header-title duo-header-title">
                                 <h2>DUO</h2>
                             </div>
                         </div>
-                        <div class="js-duo-table stats-table-container"></div>
+                        <div class="js-duo-table stats-table-container" aria-live="assertive"></div>
                     </div>
     
                     <!-- Squad Table Column -->
-                    <div class="col stats-column"> 
+                    <div class="column stats-column"> 
                         <div class="squad-header">
                             <div class="header-title squad-header-title">
                                 <h2>SQUAD</h2>
                             </div>
                         </div>
-                        <div class="js-squad-table stats-table-container"></div>
+                        <div class="js-squad-table stats-table-container" aria-live="assertive"></div>
                     </div>
                 </div>
             </section>
         </main>
 
     <!-- Optional JavaScript -->
-    <!-- jQuery first [Bootstrap used slim which didn't support AJAX], then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="index.js"></script>
   </body>
 </html>
