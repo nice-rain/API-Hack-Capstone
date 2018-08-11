@@ -26,3 +26,4 @@ Note: This application uses an API from https://fortnite.y3n.co/
 ## Demo
 https://nice-rain.github.io/API-Hack-Capstone/
 
+Note: You may use the names Nice_Rain, ZeroRewind, or ninja for testing.
