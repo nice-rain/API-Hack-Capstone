@@ -2,6 +2,8 @@
 Fortnite stats comparison application
 
 
+## Current Status
+The API for retrieving fortnite stats is currently down. The stat lookup will not work. I am working on updating the application to point to another Fortnite API.
 
 ## Summary
 This application allows you to look up and compare stats between two players in Fortnite. It will automatically calculate the differences for each player and color code them for easy comparison.
