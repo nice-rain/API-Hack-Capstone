@@ -11,11 +11,8 @@ const PLAYER_ONE_STATS = {};
 //Object that stores player 2's JSON Data
 const PLAYER_TWO_STATS = {};
 
-//Base URL for private fortnite API provided by y3n (not using Epic Game's due to auth requirement)
-const BASE_FORTNITE_API_PLAYER_URL = "https://fortnite.y3n.co/v2/player/"
-
 //API Key
-const API_KEY = "O0gepvKFlLkth2F1kLqP";
+const API_KEY = "b3d6318487f34d5b2681e3931b134589";
 
 
 //=======================================================
@@ -78,6 +75,7 @@ function buildDifferenceCell(stat1, stat2, bPercent = false, bFloat = false)
 //Returns a given table row for our compare tables
 function buildCompareTableRow(statTitle, stat1, stat2, bPercent = false, bFloat = false)
 {
+    //console.log(statTitle);
     let tableRow = "";
     let fixedStat1 = stat1;
     let fixedStat2 = stat2;
@@ -106,27 +104,31 @@ function buildCompareTableRow(statTitle, stat1, stat2, bPercent = false, bFloat 
 function buildTableCompareSolo()
 {
     //Calculate our float values (these should be 3 spaces max)
-    let winRateDifference = PLAYER_ONE_STATS.stats.pc.solo.winRate - PLAYER_TWO_STATS.stats.pc.solo.winRate;
-    let kdDifference = PLAYER_ONE_STATS.stats.pc.solo.kpd - PLAYER_TWO_STATS.stats.pc.solo.kpd;
-    let kpmDifference = PLAYER_ONE_STATS.stats.pc.solo.kpm - PLAYER_TWO_STATS.stats.pc.solo.kpm;
-    let p1ScorePerMatch = PLAYER_ONE_STATS.stats.pc.solo.score / PLAYER_ONE_STATS.stats.pc.solo.matchesPlayed;
-    let p2ScorePerMatch = PLAYER_TWO_STATS.stats.pc.solo.score / PLAYER_TWO_STATS.stats.pc.solo.matchesPlayed;
-    let spmDifference = p1ScorePerMatch - p2ScorePerMatch;
+    //let winRateDifference = PLAYER_ONE_STATS.stats.winrate_solo - PLAYER_TWO_STATS.stats.winrate_solo;
+    //let kdDifference = PLAYER_ONE_STATS.stats.kd_solo - PLAYER_TWO_STATS.stats.kd_solo;
+    //let kpmDifference = PLAYER_ONE_STATS.stats.pc.solo.kpm - PLAYER_TWO_STATS.stats.pc.solo.kpm;
+    let p1ScorePerMatch = PLAYER_ONE_STATS.stats.score_solo / PLAYER_ONE_STATS.stats.matchesplayed_solo;
+    let p2ScorePerMatch = PLAYER_TWO_STATS.stats.score_solo / PLAYER_TWO_STATS.stats.matchesplayed_solo;
+
+    let p1killsPerMatch = PLAYER_ONE_STATS.stats.kills_solo / PLAYER_ONE_STATS.stats.matchesplayed_solo;
+    let p2killsPerMatch = PLAYER_TWO_STATS.stats.kills_solo / PLAYER_TWO_STATS.stats.matchesplayed_solo;
+
+    //let spmDifference = p1ScorePerMatch - p2ScorePerMatch;
 
     //Add our table element
     let newTable = `<table>
     <tr><th>Stats</th><th class=\"table-stats-compare\">P1</th><th class=\"table-stats-compare\">P2</th><th class=\"table-stats-compare\">Diff.</th></tr>` + 
 
-    buildCompareTableRow("Matches Played", PLAYER_ONE_STATS.stats.pc.solo.matchesPlayed, PLAYER_TWO_STATS.stats.pc.solo.matchesPlayed) +
-    buildCompareTableRow("Wins", PLAYER_ONE_STATS.stats.pc.solo.wins, PLAYER_TWO_STATS.stats.pc.solo.wins) +
-    buildCompareTableRow("Win Rate", PLAYER_ONE_STATS.stats.pc.solo.winRate, PLAYER_TWO_STATS.stats.pc.solo.winRate, true, true) +
-    buildCompareTableRow("Kills", PLAYER_ONE_STATS.stats.pc.solo.kills, PLAYER_TWO_STATS.stats.pc.solo.kills) +
-    buildCompareTableRow("Kill/Death", PLAYER_ONE_STATS.stats.pc.solo.kpd, PLAYER_TWO_STATS.stats.pc.solo.kpd, false, true) +
-    buildCompareTableRow("Kills Per Match", PLAYER_ONE_STATS.stats.pc.solo.kpm, PLAYER_TWO_STATS.stats.pc.solo.kpm, false, true) +
-    buildCompareTableRow("Score", PLAYER_ONE_STATS.stats.pc.solo.score, PLAYER_TWO_STATS.stats.pc.solo.score) +
+    buildCompareTableRow("Matches Played", PLAYER_ONE_STATS.stats.matchesplayed_solo, PLAYER_TWO_STATS.stats.matchesplayed_solo) +
+    buildCompareTableRow("Wins", PLAYER_ONE_STATS.stats.placetop1_solo, PLAYER_TWO_STATS.stats.placetop1_solo) +
+    buildCompareTableRow("Win Rate", PLAYER_ONE_STATS.stats.winrate_solo, PLAYER_TWO_STATS.stats.winrate_solo, true, true) +
+    buildCompareTableRow("Kills", PLAYER_ONE_STATS.stats.kills_solo, PLAYER_TWO_STATS.stats.kills_solo) +
+    buildCompareTableRow("Kill/Death", PLAYER_ONE_STATS.stats.kd_solo, PLAYER_TWO_STATS.stats.kd_solo, false, true) +
+    buildCompareTableRow("Kills Per Match", p1killsPerMatch, p2killsPerMatch, false, true) +
+    buildCompareTableRow("Score", PLAYER_ONE_STATS.stats.score_solo, PLAYER_TWO_STATS.stats.score_solo) +
     buildCompareTableRow("Score Per Match", p1ScorePerMatch, p2ScorePerMatch, false, true) +
-    buildCompareTableRow("Top 10", PLAYER_ONE_STATS.stats.pc.solo.top10, PLAYER_TWO_STATS.stats.pc.solo.top10) +
-    buildCompareTableRow("Top 25", PLAYER_ONE_STATS.stats.pc.solo.top25, PLAYER_TWO_STATS.stats.pc.solo.top25) +
+    buildCompareTableRow("Top 10", PLAYER_ONE_STATS.stats.placetop10_solo, PLAYER_TWO_STATS.stats.placetop10_solo) +
+    buildCompareTableRow("Top 25", PLAYER_ONE_STATS.stats.placetop25_solo, PLAYER_TWO_STATS.stats.placetop25_solo) +
     `</table>`;
 
     return newTable;
@@ -136,27 +138,31 @@ function buildTableCompareSolo()
 function buildTableCompareDuo()
 {
     //Calculate our float values (these should be 3 spaces max)
-    let winRateDifference = PLAYER_ONE_STATS.stats.pc.duo.winRate - PLAYER_TWO_STATS.stats.pc.duo.winRate;
-    let kdDifference = PLAYER_ONE_STATS.stats.pc.duo.kpd - PLAYER_TWO_STATS.stats.pc.duo.kpd;
-    let kpmDifference = PLAYER_ONE_STATS.stats.pc.duo.kpm - PLAYER_TWO_STATS.stats.pc.duo.kpm;
-    let p1ScorePerMatch = PLAYER_ONE_STATS.stats.pc.duo.score / PLAYER_ONE_STATS.stats.pc.duo.matchesPlayed;
-    let p2ScorePerMatch = PLAYER_TWO_STATS.stats.pc.duo.score / PLAYER_TWO_STATS.stats.pc.duo.matchesPlayed;
-    let spmDifference = p1ScorePerMatch - p2ScorePerMatch;
+    //let winRateDifference = PLAYER_ONE_STATS.stats.pc.duo.winRate - PLAYER_TWO_STATS.stats.pc.duo.winRate;
+    //let kdDifference = PLAYER_ONE_STATS.stats.pc.duo.kpd - PLAYER_TWO_STATS.stats.pc.duo.kpd;
+    //let kpmDifference = PLAYER_ONE_STATS.stats.pc.duo.kpm - PLAYER_TWO_STATS.stats.pc.duo.kpm;
+    let p1ScorePerMatch = PLAYER_ONE_STATS.stats.score_duo / PLAYER_ONE_STATS.stats.matchesplayed_duo;
+    let p2ScorePerMatch = PLAYER_TWO_STATS.stats.score_duo / PLAYER_TWO_STATS.stats.matchesplayed_duo;
+
+    let p1killsPerMatch = PLAYER_ONE_STATS.stats.kills_duo / PLAYER_ONE_STATS.stats.matchesplayed_duo;
+    let p2killsPerMatch = PLAYER_TWO_STATS.stats.kills_duo / PLAYER_TWO_STATS.stats.matchesplayed_duo;
+
+    //let spmDifference = p1ScorePerMatch - p2ScorePerMatch;
 
     //Add our table element
     let newTable = `<table>
     <tr><th>Stats</th><th class=\"table-stats-compare\">P1</th><th class=\"table-stats-compare\">P2</th><th class=\"table-stats-compare\">Diff.</th></tr>` +
 
-    buildCompareTableRow("Matches Played", PLAYER_ONE_STATS.stats.pc.duo.matchesPlayed, PLAYER_TWO_STATS.stats.pc.duo.matchesPlayed) +
-    buildCompareTableRow("Wins", PLAYER_ONE_STATS.stats.pc.duo.wins, PLAYER_TWO_STATS.stats.pc.duo.wins) +
-    buildCompareTableRow("Win Rate", PLAYER_ONE_STATS.stats.pc.duo.winRate, PLAYER_TWO_STATS.stats.pc.duo.winRate, true, true) +
-    buildCompareTableRow("Kills", PLAYER_ONE_STATS.stats.pc.duo.kills, PLAYER_TWO_STATS.stats.pc.duo.kills) +
-    buildCompareTableRow("Kill/Death Ratio", PLAYER_ONE_STATS.stats.pc.duo.kpd, PLAYER_TWO_STATS.stats.pc.duo.kpd, false, true) +
-    buildCompareTableRow("Kills Per Match", PLAYER_ONE_STATS.stats.pc.duo.kpm, PLAYER_TWO_STATS.stats.pc.duo.kpm, false, true) +
-    buildCompareTableRow("Score", PLAYER_ONE_STATS.stats.pc.duo.score, PLAYER_TWO_STATS.stats.pc.duo.score) +
+    buildCompareTableRow("Matches Played", PLAYER_ONE_STATS.stats.matchesplayed_duo, PLAYER_TWO_STATS.stats.matchesplayed_duo) +
+    buildCompareTableRow("Wins", PLAYER_ONE_STATS.stats.placetop1_duo, PLAYER_TWO_STATS.stats.placetop1_duo) +
+    buildCompareTableRow("Win Rate", PLAYER_ONE_STATS.stats.winrate_duo, PLAYER_TWO_STATS.stats.winrate_duo, true, true) +
+    buildCompareTableRow("Kills", PLAYER_ONE_STATS.stats.kills_duo, PLAYER_TWO_STATS.stats.kills_duo) +
+    buildCompareTableRow("Kill/Death Ratio", PLAYER_ONE_STATS.stats.kd_duo, PLAYER_TWO_STATS.stats.kd_duo, false, true) +
+    buildCompareTableRow("Kills Per Match", p1killsPerMatch, p2killsPerMatch, false, true) +
+    buildCompareTableRow("Score", PLAYER_ONE_STATS.stats.score_duo, PLAYER_TWO_STATS.stats.score_duo) +
     buildCompareTableRow("Score Per Match", p1ScorePerMatch, p2ScorePerMatch, false, true) +
-    buildCompareTableRow("Top 10", PLAYER_ONE_STATS.stats.pc.duo.top5, PLAYER_TWO_STATS.stats.pc.duo.top5) +
-    buildCompareTableRow("Top 25", PLAYER_ONE_STATS.stats.pc.duo.top12, PLAYER_TWO_STATS.stats.pc.duo.top12) +
+    buildCompareTableRow("Top 10", PLAYER_ONE_STATS.stats.placetop5_duo, PLAYER_TWO_STATS.stats.placetop5_duo) +
+    buildCompareTableRow("Top 25", PLAYER_ONE_STATS.stats.placetop12_duo, PLAYER_TWO_STATS.stats.placetop12_duo) +
 
     `</table>`;
 
@@ -167,27 +173,31 @@ function buildTableCompareDuo()
 function buildTableCompareSquad()
 {
     //Calculate our float values (these should be 3 spaces max)
-    let winRateDifference = PLAYER_ONE_STATS.stats.pc.squad.winRate - PLAYER_TWO_STATS.stats.pc.squad.winRate;
-    let kdDifference = PLAYER_ONE_STATS.stats.pc.squad.kpd - PLAYER_TWO_STATS.stats.pc.squad.kpd;
-    let kpmDifference = PLAYER_ONE_STATS.stats.pc.squad.kpm - PLAYER_TWO_STATS.stats.pc.squad.kpm;
-    let p1ScorePerMatch = PLAYER_ONE_STATS.stats.pc.squad.score / PLAYER_ONE_STATS.stats.pc.squad.matchesPlayed;
-    let p2ScorePerMatch = PLAYER_TWO_STATS.stats.pc.squad.score / PLAYER_TWO_STATS.stats.pc.squad.matchesPlayed;
-    let spmDifference = p1ScorePerMatch - p2ScorePerMatch;
+    //let winRateDifference = PLAYER_ONE_STATS.stats.pc.squad.winRate - PLAYER_TWO_STATS.stats.pc.squad.winRate;
+    //let kdDifference = PLAYER_ONE_STATS.stats.pc.squad.kpd - PLAYER_TWO_STATS.stats.pc.squad.kpd;
+    //let kpmDifference = PLAYER_ONE_STATS.stats.pc.squad.kpm - PLAYER_TWO_STATS.stats.pc.squad.kpm;
+    let p1ScorePerMatch = PLAYER_ONE_STATS.stats.score_squad / PLAYER_ONE_STATS.stats.matchesplayed_squad;
+    let p2ScorePerMatch = PLAYER_TWO_STATS.stats.score_squad / PLAYER_TWO_STATS.stats.matchesplayed_squad;
+    let p1killsPerMatch = PLAYER_ONE_STATS.stats.kills_squad / PLAYER_ONE_STATS.stats.matchesplayed_squad;
+    let p2killsPerMatch = PLAYER_TWO_STATS.stats.kills_squad / PLAYER_TWO_STATS.stats.matchesplayed_squad;
+
+
+    //let spmDifference = p1ScorePerMatch - p2ScorePerMatch;
 
     //Add our table element
     let newTable = `<table>
     <tr><th>Stats</th><th class=\"table-stats-compare\">P1</th><th class=\"table-stats-compare\">P2</th><th class=\"table-stats-compare\">Diff.</th></tr>` +
 
-    buildCompareTableRow("Matches Played", PLAYER_ONE_STATS.stats.pc.squad.matchesPlayed, PLAYER_TWO_STATS.stats.pc.squad.matchesPlayed) +
-    buildCompareTableRow("Wins", PLAYER_ONE_STATS.stats.pc.squad.wins, PLAYER_TWO_STATS.stats.pc.squad.wins) +
-    buildCompareTableRow("Win Rate", PLAYER_ONE_STATS.stats.pc.squad.winRate, PLAYER_TWO_STATS.stats.pc.squad.winRate, true, true) +
-    buildCompareTableRow("Kills", PLAYER_ONE_STATS.stats.pc.squad.kills, PLAYER_TWO_STATS.stats.pc.squad.kills) +
-    buildCompareTableRow("Kill/Death Ratio", PLAYER_ONE_STATS.stats.pc.squad.kpd, PLAYER_TWO_STATS.stats.pc.squad.kpd, false, true) +
-    buildCompareTableRow("Kills Per Match", PLAYER_ONE_STATS.stats.pc.squad.kpm, PLAYER_TWO_STATS.stats.pc.squad.kpm, false, true) +
-    buildCompareTableRow("Score", PLAYER_ONE_STATS.stats.pc.squad.score, PLAYER_TWO_STATS.stats.pc.squad.score) +
+    buildCompareTableRow("Matches Played", PLAYER_ONE_STATS.stats.matchesplayed_squad, PLAYER_TWO_STATS.stats.matchesplayed_squad) +
+    buildCompareTableRow("Wins", PLAYER_ONE_STATS.stats.placetop1_squad, PLAYER_TWO_STATS.stats.placetop1_squad) +
+    buildCompareTableRow("Win Rate", PLAYER_ONE_STATS.stats.winrate_squad, PLAYER_TWO_STATS.stats.winrate_squad, true, true) +
+    buildCompareTableRow("Kills", PLAYER_ONE_STATS.stats.kills_squad, PLAYER_TWO_STATS.stats.kills_squad) +
+    buildCompareTableRow("Kill/Death Ratio", PLAYER_ONE_STATS.stats.kd_squad, PLAYER_TWO_STATS.stats.kd_squad, false, true) +
+    buildCompareTableRow("Kills Per Match", p1killsPerMatch, p2killsPerMatch, false, true) +
+    buildCompareTableRow("Score", PLAYER_ONE_STATS.stats.score_squad, PLAYER_TWO_STATS.stats.score_squad) +
     buildCompareTableRow("Score Per Match", p1ScorePerMatch, p2ScorePerMatch, false, true) +
-    buildCompareTableRow("Top 10", PLAYER_ONE_STATS.stats.pc.squad.top3, PLAYER_TWO_STATS.stats.pc.squad.top3) +
-    buildCompareTableRow("Top 25", PLAYER_ONE_STATS.stats.pc.squad.top6, PLAYER_TWO_STATS.stats.pc.squad.top6) +
+    buildCompareTableRow("Top 10", PLAYER_ONE_STATS.stats.placetop3_squad, PLAYER_TWO_STATS.stats.placetop3_squad) +
+    buildCompareTableRow("Top 25", PLAYER_ONE_STATS.stats.placetop6_squad, PLAYER_TWO_STATS.stats.placetop6_squad) +
 
     `</table>`;
 
@@ -198,18 +208,18 @@ function buildTableCompareSquad()
 function buildTableCompareLifetime()
 {
     //Calculate our float values (these should be 3 spaces max)
-    let winRateDifference = PLAYER_ONE_STATS.stats.pc.all.winRate - PLAYER_TWO_STATS.stats.pc.all.winRate;
-    let kdDifference = PLAYER_ONE_STATS.stats.pc.all.kpd - PLAYER_TWO_STATS.stats.pc.all.kpd;
+    //let winRateDifference = PLAYER_ONE_STATS.stats.winrate - PLAYER_TWO_STATS.stats.winrate;
+    //let kdDifference = PLAYER_ONE_STATS.stats.kd - PLAYER_TWO_STATS.stats.kd;
 
     //Add our table element
     let newTable = `<table>
     <tr><th>Stats</th><th class=\"table-stats-compare\">P1</th><th class=\"table-stats-compare\">P2</th><th class=\"table-stats-compare\">Diff.</th></tr>` +
 
-    buildCompareTableRow("Matches Played", PLAYER_ONE_STATS.stats.pc.all.matchesPlayed, PLAYER_TWO_STATS.stats.pc.all.matchesPlayed) +
-    buildCompareTableRow("Wins", PLAYER_ONE_STATS.stats.pc.all.wins, PLAYER_TWO_STATS.stats.pc.all.wins) +
-    buildCompareTableRow("Win Rate", PLAYER_ONE_STATS.stats.pc.all.winRate, PLAYER_TWO_STATS.stats.pc.all.winRate, true, true) +
-    buildCompareTableRow("Kills", PLAYER_ONE_STATS.stats.pc.all.kills, PLAYER_TWO_STATS.stats.pc.all.kills) +
-    buildCompareTableRow("Kill/Death Ratio", PLAYER_ONE_STATS.stats.pc.all.kpd, PLAYER_TWO_STATS.stats.pc.all.kpd, false, true) +
+    buildCompareTableRow("Matches Played", PLAYER_ONE_STATS.totals.matchesplayed, PLAYER_TWO_STATS.totals.matchesplayed) +
+    buildCompareTableRow("Wins", PLAYER_ONE_STATS.totals.wins, PLAYER_TWO_STATS.totals.wins) +
+    buildCompareTableRow("Win Rate", PLAYER_ONE_STATS.totals.winrate, PLAYER_TWO_STATS.totals.winrate, true, true) +
+    buildCompareTableRow("Kills", PLAYER_ONE_STATS.totals.kills, PLAYER_TWO_STATS.totals.kills) +
+    buildCompareTableRow("Kill/Death Ratio", PLAYER_ONE_STATS.totals.kd, PLAYER_TWO_STATS.totals.kd, false, true) +
    
     `</table>`;
 
@@ -219,19 +229,20 @@ function buildTableCompareLifetime()
 //Returns a table built for a single player's solo stats
 function buildTablePlayerOneSolo()
 {
-    let scorePerMatch = PLAYER_ONE_STATS.stats.pc.solo.score / PLAYER_ONE_STATS.stats.pc.solo.matchesPlayed;
+    let scorePerMatch = PLAYER_ONE_STATS.stats.score_solo / PLAYER_ONE_STATS.stats.matchesplayed_solo;
+    let killsPerMatch = PLAYER_ONE_STATS.stats.kills_solo / PLAYER_ONE_STATS.stats.matchesplayed_solo;
 
     let newTable = `<table>
-    <tr><td>Matches Played: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.solo.matchesPlayed}</td></tr>
-    <tr><td>Wins: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.solo.wins}</td></tr>
-    <tr><td>Win Rate: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.solo.winRate}%</td></tr>
-    <tr><td>Kills: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.solo.kills}</td></tr>
-    <tr><td>Kill/Death Ratio: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.solo.kpd}</td></tr>
-    <tr><td>Kills Per Match: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.solo.kpm}</td></tr>
-    <tr><td>Score: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.solo.score}</td></tr>
+    <tr><td>Matches Played: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.matchesplayed_solo}</td></tr>
+    <tr><td>Wins: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.placetop1_solo}</td></tr>
+    <tr><td>Win Rate: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.winrate_solo}%</td></tr>
+    <tr><td>Kills: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.kills_solo}</td></tr>
+    <tr><td>Kill/Death Ratio: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.kd_solo}</td></tr>
+    <tr><td>Kills Per Match: </td><td class="table-stats-single">${killsPerMatch.toFixed(3)}</td></tr>
+    <tr><td>Score: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.score_solo}</td></tr>
     <tr><td>Score Per match: </td><td class="table-stats-single">${scorePerMatch.toFixed(3)}</td></tr>
-    <tr><td>Top 10: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.solo.top10}</td></tr>
-    <tr><td>Top 25: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.solo.top25}</td></tr>
+    <tr><td>Top 10: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.placetop10_solo}</td></tr>
+    <tr><td>Top 25: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.placetop25_solo}</td></tr>
     </table>`;
 
     return newTable;
@@ -240,19 +251,21 @@ function buildTablePlayerOneSolo()
 //Returns a table built for a single player's duo stats
 function buildTablePlayerOneDuo()
 {
-    let scorePerMatch = PLAYER_ONE_STATS.stats.pc.duo.score / PLAYER_ONE_STATS.stats.pc.duo.matchesPlayed;
+    let scorePerMatch = PLAYER_ONE_STATS.stats.score_duo / PLAYER_ONE_STATS.stats.matchesplayed_duo;
+    let killsPerMatch = PLAYER_ONE_STATS.stats.kills_duo / PLAYER_ONE_STATS.stats.matchesplayed_duo;
+
 
     let newTable = `<table>
-    <tr><td>Matches Played: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.duo.matchesPlayed}</td></tr>
-    <tr><td>Wins: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.duo.wins}</td></tr>
-    <tr><td>Win Rate: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.duo.winRate}%</td></tr>
-    <tr><td>Kills: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.duo.kills}</td></tr>
-    <tr><td>Kill/Death Ratio: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.duo.kpd}</td></tr>
-    <tr><td>Kills Per Match: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.duo.kpm}</td></tr>
-    <tr><td>Score: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.duo.score}</td></tr>
+    <tr><td>Matches Played: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.matchesplayed_duo}</td></tr>
+    <tr><td>Wins: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.placetop1_duo}</td></tr>
+    <tr><td>Win Rate: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.winrate_duo}%</td></tr>
+    <tr><td>Kills: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.kills_duo}</td></tr>
+    <tr><td>Kill/Death Ratio: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.kd_duo}</td></tr>
+    <tr><td>Kills Per Match: </td><td class="table-stats-single">${killsPerMatch.toFixed(3)}</td></tr>
+    <tr><td>Score: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.score_duo}</td></tr>
     <tr><td>Score Per match: </td><td class="table-stats-single">${scorePerMatch.toFixed(3)}</td></tr>
-    <tr><td>Top 5: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.duo.top5}</td></tr>
-    <tr><td>Top 12: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.duo.top12}</td></tr>
+    <tr><td>Top 5: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.placetop5_duo}</td></tr>
+    <tr><td>Top 12: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.placetop12_duo}</td></tr>
     </table>`;
 
     return newTable;
@@ -261,19 +274,20 @@ function buildTablePlayerOneDuo()
 //Returns a table built for a single player's squad stats
 function buildTablePlayerOneSquad()
 {
-    let scorePerMatch = PLAYER_ONE_STATS.stats.pc.squad.score / PLAYER_ONE_STATS.stats.pc.squad.matchesPlayed;
+    let scorePerMatch = PLAYER_ONE_STATS.stats.score_squad / PLAYER_ONE_STATS.stats.matchesplayed_squad;
+    let killsPerMatch = PLAYER_ONE_STATS.stats.kills_squad / PLAYER_ONE_STATS.stats.matchesplayed_squad;
 
     let newTable = `<table>
-    <tr><td>Matches Played: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.squad.matchesPlayed}</td></tr>
-    <tr><td>Wins: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.squad.wins}</td></tr>
-    <tr><td>Win Rate: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.squad.winRate}%</td></tr>
-    <tr><td>Kills: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.squad.kills}</td></tr>
-    <tr><td>Kill/Death Ratio: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.squad.kpd}</td></tr>
-    <tr><td>Kills Per Match: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.squad.kpm}</td></tr>
-    <tr><td>Score: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.squad.score}</td></tr>
+    <tr><td>Matches Played: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.matchesplayed_squad}</td></tr>
+    <tr><td>Wins: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.placetop1_squad}</td></tr>
+    <tr><td>Win Rate: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.winrate_squad}%</td></tr>
+    <tr><td>Kills: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.kills_squad}</td></tr>
+    <tr><td>Kill/Death Ratio: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.kd_squad}</td></tr>
+    <tr><td>Kills Per Match: </td><td class="table-stats-single">${killsPerMatch.toFixed(3)}</td></tr>
+    <tr><td>Score: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.score_squad}</td></tr>
     <tr><td>Score Per match: </td><td class="table-stats-single">${scorePerMatch.toFixed(3)}</td></tr>
-    <tr><td>Top 3: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.squad.top3}</td></tr>
-    <tr><td>Top 6: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.squad.top6}</td></tr>
+    <tr><td>Top 3: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.placetop3_squad}</td></tr>
+    <tr><td>Top 6: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.placetop6_squad}</td></tr>
     </table>`;
 
     return newTable;
@@ -285,11 +299,11 @@ function buildTablePlayerOneLifetime()
     let newTable = "<table>";
     //Add our table element and fill it in
     newTable += `
-    <tr><td>Matches Played: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.all.matchesPlayed}</td></tr>
-    <tr><td>Wins: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.all.wins}</td></tr>
-    <tr><td>Win Rate: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.all.winRate}</td></tr>
-    <tr><td>Kills: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.all.kills}</td></tr>
-    <tr><td>Kill/Death Ratio: </td><td class="table-stats-single">${PLAYER_ONE_STATS.stats.pc.all.kpd}</td></tr>
+    <tr><td>Matches Played: </td><td class="table-stats-single">${PLAYER_ONE_STATS.totals.matchesplayed}</td></tr>
+    <tr><td>Wins: </td><td class="table-stats-single">${PLAYER_ONE_STATS.totals.wins}</td></tr>
+    <tr><td>Win Rate: </td><td class="table-stats-single">${PLAYER_ONE_STATS.totals.winrate}</td></tr>
+    <tr><td>Kills: </td><td class="table-stats-single">${PLAYER_ONE_STATS.totals.kills}</td></tr>
+    <tr><td>Kill/Death Ratio: </td><td class="table-stats-single">${PLAYER_ONE_STATS.totals.kd}</td></tr>
     </table>`;
 
     return newTable;
@@ -398,23 +412,28 @@ function refreshPlayerInfoForm(newForm)
 //We will not need to request player 1 again.
 function savePlayerStats(msg, playerNumber)
 {
+    //console.log("save player stats");
+
     //Check to see if we have BR Stats.
     //If we have stats, return true, otherwise return false
-    if(!$.isEmptyObject(msg.br.stats))
+    if(!$.isEmptyObject(msg.stats))
     {
         //check our player number to determine which stats object to update
         if(playerNumber === 1)
         {
-            PLAYER_ONE_STATS.userID = msg.userID;
-            PLAYER_ONE_STATS.displayName = msg.displayName;
-            PLAYER_ONE_STATS.stats = msg.br.stats;
+            PLAYER_ONE_STATS.userID = msg.uid;
+            PLAYER_ONE_STATS.displayName = msg.username;
+            PLAYER_ONE_STATS.stats = msg.stats;
+            PLAYER_ONE_STATS.totals = msg.totals;
+            //console.log(msg.stats);
             return true;
         }
         else if(playerNumber === 2)
         {
-            PLAYER_TWO_STATS.userID = msg.userID;
-            PLAYER_TWO_STATS.displayName = msg.displayName;
-            PLAYER_TWO_STATS.stats = msg.br.stats;
+            PLAYER_TWO_STATS.userID = msg.uid;
+            PLAYER_TWO_STATS.displayName = msg.username;
+            PLAYER_TWO_STATS.stats = msg.stats;
+            PLAYER_TWO_STATS.totals = msg.totals;
             return true;
         }
         else{
@@ -434,6 +453,8 @@ function savePlayerStats(msg, playerNumber)
 //Once our stats are stored, calls DOM updates
 function updatePlayerStats(msg, playerNumber)
 {
+    //console.log("update player stats");
+
     //Make sure we can save our stats before updating DOM
     if(savePlayerStats(msg, playerNumber))
     {       
@@ -475,25 +496,38 @@ function updatePlayerStats(msg, playerNumber)
 //Upon success, it will call updatePlayerStats to save the stats.
 //We need to pass the playerNumber to know which player object to 
 //save the stats to and which DOM update function to call.
-function fortniteGetPlayerStats(playerName, playerNumber)
+function fortniteGetPlayerStats(userID, playerNumber)
 {
-        //AJAX Request (we can't use headers with JSON request)
+    var form = new FormData();
+    form.append("user_id", userID);
+    form.append("platform", "pc");
+    form.append("window", "alltime");
+    
+    //AJAX Request (we can't use headers with JSON request)
         const requestSettings = 
         {
-            url: BASE_FORTNITE_API_PLAYER_URL + playerName,
-            type: 'GET',
-            dataType: 'json',
-            headers: {
-                //'User-Agent': 'nodejs request',
-                'X-Key': API_KEY
-            }
-        };
+            "async": true,
+            "crossDomain": true,
+            "url": "https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats",
+            "method": "POST",
+            "headers": {
+              "Authorization": API_KEY
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
+          }
 
         //Send our ajax request
         let ajaxRequest = $.ajax(requestSettings);
 
         //Called on success
         ajaxRequest.done(function(data){
+           //console.log(data);
+           data = $.parseJSON(data);
+           
+           //Pass our user data to our update
             updatePlayerStats(data, playerNumber);
         });
 
@@ -515,7 +549,7 @@ function fortniteGetPlayerID(playerName, playerNumber)
         "url": "https://fortnite-public-api.theapinetwork.com/prod09/users/id",
         "method": "POST",
         "headers": {
-            "Authorization": "b3d6318487f34d5b2681e3931b134589"
+            "Authorization": API_KEY
         },
         "processData": false,
         "contentType": false,
@@ -524,7 +558,14 @@ function fortniteGetPlayerID(playerName, playerNumber)
     }
 
     $.ajax(settings).done(function (response) {
-        console.log(response);
+        
+        //Parse our given response
+        //console.log(response);
+
+        response = $.parseJSON(response);
+
+        //pass our user ID to get player stats request
+        fortniteGetPlayerStats(response.uid, playerNumber);
     });
 }
 
@@ -545,7 +586,8 @@ function bindCompareSubmit()
         if(parent.find('#Player2Name').val())
         {
             //Submit AJAX Call/Update Function
-            fortniteGetPlayerStats(parent.find('#Player2Name').val(), 2);
+            fortniteGetPlayerID(parent.find('#Player2Name').val(), 2);
+            //fortniteGetPlayerStats(parent.find('#Player2Name').val(), 2);
         }
         else{
             //$('.js-error').html("Player Name is Required").show().fadeOut(2000);
@@ -583,9 +625,10 @@ function bindSinglePlayerSubmit()
 
         if(parent.find('#Player1Name').val())
         {
-            fortniteGetPlayerID(parent.find('#Player1Name').val());
-            //Submit AJAX Call/Update Function
-            fortniteGetPlayerStats(parent.find('#Player1Name').val(), 1);
+            //Submit AJAX Call/Update Function(pass name and player number)
+            fortniteGetPlayerID(parent.find('#Player1Name').val(), 1);
+            
+            //fortniteGetPlayerStats(parent.find('#Player1Name').val(), 1);
         }
         else{
             //$('.js-error').html("Player Name is Required").show().fadeOut(2000);
