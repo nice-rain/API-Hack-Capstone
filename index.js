@@ -503,6 +503,31 @@ function fortniteGetPlayerStats(playerName, playerNumber)
 }
 
 
+//Test Stats
+function fortniteGetPlayerID(playerName, playerNumber)
+{
+    var form = new FormData();
+    form.append("username", playerName);
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://fortnite-public-api.theapinetwork.com/prod09/users/id",
+        "method": "POST",
+        "headers": {
+            "Authorization": "b3d6318487f34d5b2681e3931b134589"
+        },
+        "processData": false,
+        "contentType": false,
+        "mimeType": "multipart/form-data",
+        "data": form
+    }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+}
+
 
 //=======================================================
 // Event Bindings For Submit Buttons
@@ -514,7 +539,6 @@ function bindCompareSubmit()
     $('.js-player-info-form').on('click', '.js-player2-submit', function(event)
     {
         event.preventDefault();
-
         //Store our parent
         let parent = $(this).parent();
 
@@ -559,6 +583,7 @@ function bindSinglePlayerSubmit()
 
         if(parent.find('#Player1Name').val())
         {
+            fortniteGetPlayerID(parent.find('#Player1Name').val());
             //Submit AJAX Call/Update Function
             fortniteGetPlayerStats(parent.find('#Player1Name').val(), 1);
         }
