@@ -516,8 +516,7 @@ function fortniteGetPlayerStats(userID, playerNumber)
             "processData": false,
             "contentType": false,
             "mimeType": "multipart/form-data",
-            "data": form,
-            "dataType":"json"
+            "data": form
           }
 
         //Send our ajax request
@@ -550,12 +549,13 @@ function fortniteGetPlayerID(playerName, playerNumber)
         "url": "https://fortnite-public-api.theapinetwork.com/prod09/users/id",
         "method": "POST",
         "headers": {
-            "Authorization": API_KEY
+            "authorization": API_KEY
         },
         "processData": false,
         "contentType": false,
         "mimeType": "multipart/form-data",
-        "data": form
+        "data": form,
+        "dataType":"json"
     }
 
     $.ajax(settings).done(function (response) {
