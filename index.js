@@ -516,7 +516,8 @@ function fortniteGetPlayerStats(userID, playerNumber)
             "processData": false,
             "contentType": false,
             "mimeType": "multipart/form-data",
-            "data": form
+            "data": form,
+            "dataType":"json"
           }
 
         //Send our ajax request
