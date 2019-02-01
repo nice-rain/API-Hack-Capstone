@@ -552,7 +552,8 @@ function fortniteGetPlayerID(playerName, playerNumber)
         "url": "https://fortnite-public-api.theapinetwork.com/prod09/users/id",
         "method": "POST",
         "headers": {
-            "Authorization": API_KEY
+            "Authorization": API_KEY,
+            "authorization": API_KEY
         },
         "processData": false,
         "contentType": false,
