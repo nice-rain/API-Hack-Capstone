@@ -546,20 +546,27 @@ function fortniteGetPlayerID(playerName, playerNumber)
     var form = new FormData();
     form.append("username", playerName);
 
+    // var settings = {
+    //     "async": true,
+    //     "crossDomain": true,
+    //     "url": "https://fortnite-public-api.theapinetwork.com/prod09/users/id",
+    //     "method": "POST",
+    //     "headers": {
+    //         "Authorization": API_KEY,
+    //     },
+    //     "processData": false,
+    //     "contentType": false,
+    //     "mimeType": "multipart/form-data",
+    //     "data": form,
+    // }
+
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://fortnite-public-api.theapinetwork.com/prod09/users/id",
-        "method": "POST",
-        "headers": {
-            "Authorization": API_KEY,
-            "authorization": API_KEY
-        },
-        "processData": false,
-        "contentType": false,
-        "mimeType": "multipart/form-data",
-        "data": form,
+        "url": `https://fortnite-public-api.theapinetwork.com/prod09/users/id?username=${playerName}`,
+        "method": "GET"
     }
+
 
     $.ajax(settings).done(function (response) {
         
