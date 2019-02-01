@@ -509,6 +509,9 @@ function fortniteGetPlayerStats(userID, playerNumber)
             "async": true,
             "crossDomain": true,
             "url": "https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats",
+            "xhrFields": {
+                "withCredentials": true
+             },
             "method": "POST",
             "headers": {
               "Authorization": API_KEY
