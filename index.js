@@ -538,7 +538,7 @@ function fortniteGetPlayerStats(userID, playerNumber)
         //Called on success
         ajaxRequest.done(function(data){
            //console.log(data);
-           data = $.parseJSON(data);
+           //data = $.parseJSON(data);
            
            //Pass our user data to our update
             updatePlayerStats(data, playerNumber);
@@ -583,7 +583,7 @@ function fortniteGetPlayerID(playerName, playerNumber)
         //Parse our given response
         //console.log(response);
 
-        response = $.parseJSON(response);
+        //response = $.parseJSON(response);
 
         //pass our user ID to get player stats request
         fortniteGetPlayerStats(response.uid, playerNumber);
