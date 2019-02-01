@@ -504,23 +504,33 @@ function fortniteGetPlayerStats(userID, playerNumber)
     form.append("window", "alltime");
     
     //AJAX Request (we can't use headers with JSON request)
+        // const requestSettings = 
+        // {
+        //     "async": true,
+        //     "crossDomain": true,
+        //     "url": "https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats",
+        //     "xhrFields": {
+        //         "withCredentials": true
+        //      },
+        //     "method": "POST",
+        //     "headers": {
+        //       "Authorization": API_KEY
+        //     },
+        //     "processData": false,
+        //     "contentType": false,
+        //     "mimeType": "multipart/form-data",
+        //     "data": form
+        //   }
+
         const requestSettings = 
         {
             "async": true,
             "crossDomain": true,
-            "url": "https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats",
-            "xhrFields": {
-                "withCredentials": true
-             },
-            "method": "POST",
-            "headers": {
-              "Authorization": API_KEY
-            },
-            "processData": false,
-            "contentType": false,
-            "mimeType": "multipart/form-data",
-            "data": form
+            "url": `https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=${userID}&platform=pc`,
+            "method": "GET"
           }
+
+          
 
         //Send our ajax request
         let ajaxRequest = $.ajax(requestSettings);
