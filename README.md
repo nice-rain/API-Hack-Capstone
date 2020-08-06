@@ -22,6 +22,6 @@ Stat Comparison
 Note: This application uses an API from https://fortniteapi.com
 
 ## Demo
-https://nice-rain.github.io/API-Hack-Capstone/
+~~https://nice-rain.github.io/API-Hack-Capstone/~~
 
-Note: You may use the names Nice_Rain, ZeroRewind, or ninja for testing.
+Note: Currently the live demo is down due to issues regarding the API.
