@@ -7,11 +7,11 @@ This application allows you to look up and compare stats between two players in 
 ## Screenshots
 
 Individual Stats
-![Individual Stats](https://NiceRa.in/rain/sharex/screenshots/chrome_2018-09-20_22-42-43.png)
+![Individual Stats](https://fullstack-dev.pro/images/chrome_2018-09-20_22-42-43.png)
 
 
 Stat Comparison
-![Stat Comparison](https://NiceRa.in/rain/sharex/screenshots/chrome_2018-09-20_22-42-10.png)
+![Stat Comparison](https://fullstack-dev.pro/images/chrome_2018-09-20_22-42-10.png)
 
 ## Built With
 * HTML
